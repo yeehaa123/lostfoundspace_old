@@ -1,0 +1,32 @@
+:plain
+  <script type="text/x-handlebars" data-template-name="application">
+    <h1>Lost and Found in Space</h1>
+    {{ outlet }}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    HELLO
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="slides">
+    <h2>Slides</h2>
+    {{#each slide in controller}}
+      {{#linkTo "slide" slide}}
+      <section {{ bindAttr id="slide.id" }}>
+        <h3>{{ slide.id }}</h3>
+        <p>{{ slide.description }}<p>
+      </section>
+      {{/linkTo}}
+    {{/each}}
+    <a href="#" {{ action "addSlide" }}>New Slide</a>
+    {{ outlet }}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="slides/index">
+    <h2>Select a Slide</h2>
+  </script>
+  <script type="text/x-handlebars" data-template-name="slide">
+    <h2>Slide {{id}}</h2>
+    <p>{{ description }}</p>
+    <a href="#" {{ action "removeSlide" }}>Remove Slide</a>
+  </script>
